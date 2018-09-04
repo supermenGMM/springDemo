@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--使用自定义策略-->
+ <!--   <context:component-scan base-package="com.mm" name-generator="com.mm.other.MyBeanNameGenerator"-->
+    <context:component-scan base-package="com.mm"
+    use-default-filters="true">
+        <!--两种方式不扫描BeanAnnotation-->
+     <!-- <context:exclude-filter type="regex" expression="com.mm.bean.*"/>-->
+        <!--     <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Component"/>-->
+    </context:component-scan >
+
+<!--   用@Required注解检查属性依赖
+    *
+    * Spring的依赖检查功能仅能检查某些类型的所有属性，不能仅检查特定的属性，灵活性不够。
+    * 而往往我们只需要检查特定的属性是否设置，而不是特定类型的所有属性。
+
+    RequiredAnnotationBeanPostProcessor是一个Spring bean后处理器，它检查带有@Required注解的所有Bean属性是否设置。
+    Bean后处理器是一类特殊的Spring bean，能够在每个Bean初始化之前执行附加的操作。
+    为了启用这个bean后处理器进行属性检查，必须在Spring IoC容器中注册它。
+    注意，这个bean后处理器只能检查属性是否已经设置，而不能检查属性是否非空。
+
+    为了要求Spring检查序列生成器上所有带有@Required注解的bean属性是否已经设置，
+    必须在IoC容器中注册一个RequiredAnnotationBeanPostProcessor实例。
+    如果打算使用Bean工厂，就必须通过API注册这个Bean后处理器，否则只能在应用程序上下文中声明。
+
+      Spring2.5或更高版本，可以简单在Bean配置文件中包含 <context:annotation-config> 元素，
+      这将自动注册一个RequiredAnnotationBeanPostProcessor实例。
+    -->
+    <!--<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />-->
+    <!--<bean class="com.mm.autowire.MovieService" id="movieService" >
+    </bean>
+    <bean class="com.mm.autowire.MovieDao" id="movieDao"/>-->
+
+    <!--<context:property-placeholder location="classpath:config.properties"/>-->
+</beans>

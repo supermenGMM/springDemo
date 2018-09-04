@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+    default-init-method="defaultInit" default-destroy-method="defaultDestory">
+    <!-- bean的注入方式-->
+    <!-- bean的作用域-->
+    <bean  class="com.mm.dao.PigDao" id="pigDao" scope="prototype"></bean>
+    <bean  class="com.mm.service.PigService" id="pigService">
+        <!--<constructor-arg name="pigDao" ref="pigDao"></constructor-arg>-->
+        <property name="pigDao" ref="pigDao"></property>
+    </bean>
+
+    <!--bean的生命周期-->
+    <bean class="com.mm.BeanLifecycle" id="lifecycle"></bean>
+<!--
+    <bean class="com.mm.BeanLifecycle" id="lifecycle" init-method="init" destroy-method="destory"></bean>
+-->
+</beans>
