@@ -6,13 +6,21 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
     <context:component-scan base-package="com.mm"/>
     <aop:config>
-        <aop:pointcut id="pointcut1" expression="execution(* com.mm.serivce.*.*save(..))" />
+        <aop:pointcut id="pointcut1" expression="execution(* com.mm.serivce.*..*save*(..))" />
         <aop:aspect id ="aspect1" ref="myAspect">
+            <aop:declare-parents types-matching="com.mm.serivce..*+"
+                                 implement-interface="com.mm.introduction.Fit"
+                                 default-impl="com.mm.introduction.FitImpl"/>
             <!--前置通知-->
             <aop:before method="before" pointcut-ref="pointcut1"/>
             <aop:after-throwing method="afterThrowingAdvice" pointcut-ref="pointcut1"></aop:after-throwing>
             <aop:after-returning method="returnAdvice" pointcut-ref="pointcut1"/>
             <aop:after method="after" pointcut-ref="pointcut1"/>
+            <aop:around method="aroundAdvice" pointcut-ref="pointcut1"/>
+
+            <aop:around method="aroundAdviceHasParam" pointcut="execution(* com.mm.serivce.impl.MovieService.*(String,int ) )
+and args(name,age)"/>
+
         </aop:aspect>
     </aop:config>
 </beans>
