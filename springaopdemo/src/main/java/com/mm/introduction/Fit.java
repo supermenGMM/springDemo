@@ -1,6 +1,16 @@
 package com.mm.introduction;
 
-public interface Fit {
+import com.mm.aspectannotation.UsageTracked;
+
+public interface Fit<T> {
     void say();
 
+    String add();
+
+    void read();
+
+
+    void fix(Car car);
+
+    void hello();
 }
