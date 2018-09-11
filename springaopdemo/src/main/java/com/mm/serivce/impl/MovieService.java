@@ -23,4 +23,8 @@ public class MovieService {
     public void play(String name, int age) {
         System.out.println("电影放映"+name);
     }
+
+    public int update(){
+        return 2;
+    }
 }

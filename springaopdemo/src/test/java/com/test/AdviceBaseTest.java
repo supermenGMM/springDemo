@@ -16,11 +16,13 @@ public class AdviceBaseTest extends JunitTestBase {
     @Test
     public void test() {
         MovieService myService = (MovieService) applicationContext.getBean("movieService");
-        myService.save(2);
+//        myService.update();
 //        myService.play("aaa",2);
-
-        MovieService myService2 = (MovieService) applicationContext.getBean("movieService");
-        myService.save(3);
+//        myService.save(2);
+        myService.save2(2);
+//
+//        MovieService myService2 = (MovieService) applicationContext.getBean("movieService");
+//        myService.save(3);
     }
 
     /**

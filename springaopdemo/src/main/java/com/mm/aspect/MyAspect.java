@@ -6,6 +6,8 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+
 @Service
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class MyAspect {
@@ -17,12 +19,19 @@ public class MyAspect {
         System.out.println("后置通知，抛出异常之后还是会通知.在返回后通知之后");
     }
 
-    public void returnAdvice() {
+    public String returnAdvice() {
         System.out.println("返回后通知，抛出异常就没有了，如果是环绕通知,那么不是看方法是否抛出异常，而是看环绕通知的" +
                 "那个方法是否抛出了异常");
+        return "aaa";
+    }
+    public String returnAdvice2(int retVal) {
+        System.out.println(retVal+"返回后通知，抛出异常就没有了，如果是环绕通知,那么不是看方法是否抛出异常，而是看环绕通知的" +
+                "那个方法是否抛出了异常");
+        return "aaa";
     }
 
-    public void afterThrowingAdvice() {
+    public void afterThrowingAdvice(IOException e) {
+        e.printStackTrace();
         System.out.println("抛出异常后通知,如果是环绕通知。 ");
     }
 
