@@ -5,8 +5,8 @@ import com.mm.introduction.Fit;
 import com.mm.serivce.impl.MovieService;
 import org.junit.Test;
 
-public class AdviceBaseTest extends JunitTestBase {
-    public AdviceBaseTest() {
+public class AopConfigBaseTest extends JunitTestBase {
+    public AopConfigBaseTest() {
         super("spring-aop.xml");
     }
 
