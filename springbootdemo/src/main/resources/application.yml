@@ -11,13 +11,17 @@ spring:
       active: dev
     datasource:
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://12:3306/boot
+      url: jdbc:mysql://192.168.4.208:3306/zhaomeng
+#      connection-timeout: 50000
       password: root
-      username: root
+      data-username: root
     jpa:
       hibernate:
         ddl-auto: create
       show-sql: true
+      database-platform: org.hibernate.dialect.MySQL5Dialect
+      database: mysql
+
 name: super
 age: 24
 content: "姓名:${name},年龄:${age}}"

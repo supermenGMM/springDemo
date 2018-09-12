@@ -2,16 +2,17 @@ package com.mm.test.pojo;
 
 import jdk.nashorn.internal.objects.annotations.Getter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "food")
 public class Food {
     @Id
     @GeneratedValue
     private Integer id;
+    @Column
     private String type;
+    @Column
     private String name;
 
     public Integer getId() {
