@@ -11,10 +11,10 @@ spring:
       active: dev
     datasource:
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://192.168.4.208:3306/zhaomeng
+      url: jdbc:mysql://192.168.4.208:3306/ryx
 #      connection-timeout: 50000
-      password: root
-      data-username: root
+      password: zhaom
+      data-username: zhaom
     jpa:
       hibernate:
         ddl-auto: create
