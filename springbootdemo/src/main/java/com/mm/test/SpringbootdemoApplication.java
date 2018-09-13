@@ -1,11 +1,13 @@
-package com.mm.test.springbootdemo;
+package com.mm.test;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan(basePackages = {"com.mm"})
+
+
 @SpringBootApplication
+@ComponentScan(basePackages = {"com.mm"})
 public class SpringbootdemoApplication {
 
 	public static void main(String[] args) {

@@ -3,10 +3,11 @@ package com.mm.test.pojo;
 import jdk.nashorn.internal.objects.annotations.Getter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "food")
-public class Food {
+public class Food implements Serializable{
     @Id
     @GeneratedValue
     private Integer id;
