@@ -2,10 +2,13 @@ package com.mm.test.springbootdemo;
 
 import com.mm.test.dao.FoodResposity;
 import com.mm.test.pojo.Food;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -14,12 +17,17 @@ public class FoodController implements CommandLineRunner
     @Resource(name = "foodRepository")
     private FoodResposity foodResposity;
 
+    /**
+     * 添加加入校验。并且通过对象传递
+     * @param food
+     * @param bindingResult
+     * @return
+     */
     @PostMapping(value = "/add")
-    private String add(@RequestParam String type, @RequestParam String name) {
-        Food food = new Food();
-        food.setName(name);
-        food.setType(type);
-
+    public String add(@Valid Food food, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return bindingResult.getFieldError().getField()+","+bindingResult.getFieldError().getDefaultMessage();
+        }
         Food save = foodResposity.save(food);
         return save.toString();
     }

@@ -3,6 +3,9 @@ package com.mm.test.pojo;
 import jdk.nashorn.internal.objects.annotations.Getter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import java.io.Serializable;
 
 @Entity
@@ -11,6 +14,12 @@ public class Food implements Serializable{
     @Id
     @GeneratedValue
     private Integer id;
+
+    @Column
+    @NotNull
+    @Min(value = 1, message = "数量不能少于1")
+    private int num;
+
     @Column
     private String type;
     @Column
@@ -38,6 +47,14 @@ public class Food implements Serializable{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
     }
 
     public Food() {
