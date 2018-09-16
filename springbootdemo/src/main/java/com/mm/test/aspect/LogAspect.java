@@ -16,8 +16,9 @@ public class LogAspect {
     }
 
     @Before(value = "pointcut()")
-    public void before(Joinpoint joinpoint) {
-//        logger.info(joinpoint.toString()+",,"+joinpoint.);
+    public void before(Joinpoint joinpoint) throws Throwable {
+//        logger.info(joinpoint.toString()+",,"+joinpoint.getStaticPart().getAnnotations());
+//        joinpoint.proceed();
 
     }
 }
