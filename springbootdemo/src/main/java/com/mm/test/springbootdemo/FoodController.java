@@ -1,8 +1,14 @@
 package com.mm.test.springbootdemo;
 
 import com.mm.test.dao.FoodResposity;
+import com.mm.test.enums.MessageEnum;
+import com.mm.test.pojo.ControllerResult;
 import com.mm.test.pojo.Food;
-import org.springframework.beans.factory.annotation.Value;
+import com.mm.test.service.FoodSerice;
+import com.mm.test.util.ControllerResultUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +20,12 @@ import java.util.List;
 @RestController
 public class FoodController implements CommandLineRunner
 {
+    private static Logger logger = LoggerFactory.getLogger(FoodController.class);
     @Resource(name = "foodRepository")
     private FoodResposity foodResposity;
 
+    @Autowired
+    private FoodSerice foodSerice;
     /**
      * 添加加入校验。并且通过对象传递
      * @param food
@@ -24,12 +33,14 @@ public class FoodController implements CommandLineRunner
      * @return
      */
     @PostMapping(value = "/add")
-    public String add(@Valid Food food, BindingResult bindingResult) {
+    public ControllerResult add(@Valid Food food, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return bindingResult.getFieldError().getField()+","+bindingResult.getFieldError().getDefaultMessage();
+            logger.info(bindingResult.getFieldError().getField()+","+bindingResult.getFieldError().getDefaultMessage());
+            return ControllerResultUtil.errorResult(MessageEnum.FIELD_ERROR.getCode(),bindingResult.getFieldError().getField()+","+bindingResult.getFieldError().getDefaultMessage());
         }
+
         Food save = foodResposity.save(food);
-        return save.toString();
+        return ControllerResultUtil.successResult(save.toString());
     }
 
     @DeleteMapping(value = "/del/{id}")
@@ -50,7 +61,9 @@ public class FoodController implements CommandLineRunner
 
     @GetMapping(value = "/find/{id}")
     public Food find(@PathVariable(value = "id") Integer id) {
-        return foodResposity.findById(id).orElse(null);
+        Food food = foodResposity.findById(id).orElse(null);
+        foodSerice.gettGradeByAge(food.getNum());
+        return food;
     }
 
     @GetMapping(value = "/find")
