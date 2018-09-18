@@ -16,5 +16,5 @@ spring:
       database-platform: org.hibernate.dialect.MySQL5Dialect
       database: mysql
 person:
-  name: super
-  age: 23
+  name: ${random.value}
+  age: ${random.int}

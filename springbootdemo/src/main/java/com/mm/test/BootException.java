@@ -2,10 +2,17 @@ package com.mm.test;
 
 public class BootException extends RuntimeException {
     private int code;
-    private String messge;
 
     public BootException(int code, String messge) {
+        super(messge);
         this.code = code;
-        this.messge = messge;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
     }
 }

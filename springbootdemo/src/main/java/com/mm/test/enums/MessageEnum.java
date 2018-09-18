@@ -7,7 +7,8 @@ public enum MessageEnum {
     ERROR_MESSAGE(1,"失败"),
     FIELD_ERROR(2,"字段格式错误"),
     CONDITION_ERROR(4,"条件不满足"),
-    UNKONW_ERROR(5,"未知错误");
+    UNKONW_ERROR(5,"未知错误"),
+    REQUEST_ERROR(6,"请求方式错误，请按照说明要求");
 
 
     private MessageEnum(Integer code, String message) {

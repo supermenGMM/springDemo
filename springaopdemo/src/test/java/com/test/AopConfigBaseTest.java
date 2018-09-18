@@ -35,5 +35,13 @@ public class AopConfigBaseTest extends JunitTestBase {
         Fit movieService2 = (Fit) applicationContext.getBean("movieService");
         movieService2.say();
     }
+
+    /**
+     * 一般测试
+     */
+    @Test
+    public void test3() {
+        System.out.println(System.getProperty("user.name"));;
+    }
 }
 

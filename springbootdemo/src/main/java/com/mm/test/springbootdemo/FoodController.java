@@ -24,7 +24,7 @@ public class FoodController implements CommandLineRunner
     @Resource(name = "foodRepository")
     private FoodResposity foodResposity;
 
-    @Autowired
+    @Resource(name = "foodService")
     private FoodSerice foodSerice;
     /**
      * 添加加入校验。并且通过对象传递
