@@ -1,4 +1,4 @@
-package com.mm.test.springbootdemo;
+package com.mm.test.controller;
 
 import org.junit.Test;
 

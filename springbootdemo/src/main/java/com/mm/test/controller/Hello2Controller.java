@@ -1,4 +1,4 @@
-package com.mm.test.springbootdemo;
+package com.mm.test.controller;
 
 import com.mm.test.pojo.PersonProperties;
 import org.springframework.beans.factory.annotation.Autowired;

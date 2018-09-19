@@ -1,4 +1,4 @@
-package com.mm.test.springbootdemo;
+package com.mm.test.controller;
 
 import com.mm.test.dao.FoodResposity;
 import com.mm.test.enums.MessageEnum;
@@ -6,9 +6,9 @@ import com.mm.test.pojo.ControllerResult;
 import com.mm.test.pojo.Food;
 import com.mm.test.service.FoodSerice;
 import com.mm.test.util.ControllerResultUtil;
+import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.util.List;
-
+@Api(value = "食物controller",tags = "测试")
 @RestController
 public class FoodController implements CommandLineRunner
 {
@@ -32,6 +32,10 @@ public class FoodController implements CommandLineRunner
      * @param bindingResult
      * @return
      */
+    @ApiResponses({ @ApiResponse(message = "添加食物成功", response = String.class, code = 200),
+            @ApiResponse(message = "添加食物异常", response = String.class, code = 500) })
+    @ApiOperation(value = "添加")
+    @ApiImplicitParam(name = "food",value = "食物对象")
     @PostMapping(value = "/add")
     public ControllerResult add(@Valid Food food, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
