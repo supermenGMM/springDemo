@@ -45,9 +45,10 @@ public class MyAspect {
         } catch (Throwable throwable) {
             throwable.printStackTrace();
             System.out.println("环绕通知hou");
-            throw  new RuntimeException();
+//            throw  new RuntimeException();
 
         }
+        return  null;
     }
 
     /**
