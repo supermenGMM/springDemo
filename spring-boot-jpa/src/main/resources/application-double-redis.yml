@@ -1,0 +1,46 @@
+spring:
+
+  datasource:
+    primary:
+#      type: org.apache.commons.dbcp2.BasicDataSource
+      driver-class-name: com.mysql.jdbc.Driver
+      url: "jdbc:mysql://192.168.2.101:3306/zhaomeng?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&useSSL=false"
+      username: "root"
+      password: "root"
+
+    second:
+#      type: org.apache.commons.dbcp2.BasicDataSource
+      driver-class-name: com.mysql.jdbc.Driver
+      url: "jdbc:mysql://192.168.2.101:3306/supermeng?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&useSSL=false"
+      username: "root"
+      password: "root"
+#    hikari:
+#      connection-test-query: SELECT 1 FROM DUAL
+#      connection-timeout: 10000
+#      maximum-pool-size: 50
+#      minimum-idle: 2
+
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    database: mysql
+
+  redis:
+  #数据库索引
+    database: 0
+  #服务器地址
+    host:
+  #服务器连接端口
+    port:
+    password: #服务器连接密码
+    #连接池
+    pool:
+      max-active: 8 #最大数，负数表述没有限制
+      max-wait: 1 #最大阻塞等待时间，使用负值表示没有限制
+      max-idle: 8 #最大空闲连接
+      min-idle: 1 #最小空闲连接
+    timeout:  0 #连接超时时间
+
