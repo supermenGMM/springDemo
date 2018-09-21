@@ -1,4 +1,4 @@
-package com.mm;
+package com.mm.config;
 
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -18,19 +18,19 @@ public class JdbcTemplateUtil {
     }
 
     @Bean
-    @ConfigurationProperties
+    @ConfigurationProperties("spring.datasource.second")
     public DataSourceProperties secondaryDataSourceProperties() {
         return  new DataSourceProperties();
     }
 
-    @Bean(name = "primaryDataSource")
     @Primary
-    public DataSource primaryDataSource() {
-        return primaryDataSourceProperties().initializeDataSourceBuilder().build();
+    @Bean(name = "primaryDataSource")
+    public DataSource primaryDatasource() {
+        return  primaryDataSourceProperties().initializeDataSourceBuilder().build();
     }
 
     @Bean(name = "secondayDataSource")
-    public DataSource secondaryDataSource() {
+    public DataSource secnodDatasource() {
         return secondaryDataSourceProperties().initializeDataSourceBuilder().build();
     }
 

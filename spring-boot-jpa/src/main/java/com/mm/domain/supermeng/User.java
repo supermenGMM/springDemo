@@ -1,11 +1,10 @@
-package com.mm.domain;
+package com.mm.domain.supermeng;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "user")
+@NamedQuery(name = "User.findTop5" ,query = "select u From User u ")
 public class User {
     public User() {
     }

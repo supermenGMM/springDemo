@@ -2,25 +2,25 @@ spring:
 
   datasource:
     primary:
-      type: org.apache.commons.dbcp2.BasicDataSource
+#      type: org.apache.commons.dbcp2.BasicDataSource
       driver-class-name: com.mysql.jdbc.Driver
-      url: "jdbc:mysql://192.168.4.208:3306/zhaomeng?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&useSSL=false"
+      url: "jdbc:mysql://192.168.2.101:3306/zhaomeng?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&useSSL=false"
       username: "root"
       password: "root"
 
     second:
-      type: org.apache.commons.dbcp2.BasicDataSource
+#      type: org.apache.commons.dbcp2.BasicDataSource
       driver-class-name: com.mysql.jdbc.Driver
-      url: "jdbc:mysql://192.168.4.208:3306/supermeng?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&useSSL=false"
+      url: "jdbc:mysql://192.168.2.101:3306/supermeng?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&useSSL=false"
       username: "root"
       password: "root"
-    hikari:
-      connection-test-query: SELECT 1 FROM DUAL
-      connection-timeout: 10000
-      maximum-pool-size: 50
-      minimum-idle: 2
+#    hikari:
+#      connection-test-query: SELECT 1 FROM DUAL
+#      connection-timeout: 10000
+#      maximum-pool-size: 50
+#      minimum-idle: 2
 
-spring:
+
   jpa:
     hibernate:
       ddl-auto: update
