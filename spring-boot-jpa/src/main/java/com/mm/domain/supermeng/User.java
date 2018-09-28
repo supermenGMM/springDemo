@@ -1,11 +1,12 @@
 package com.mm.domain.supermeng;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "user")
 @NamedQuery(name = "User.findTop5" ,query = "select u From User u ")
-public class User {
+public class User implements Serializable {
     public User() {
     }
 
@@ -19,6 +20,8 @@ public class User {
 
     @Column(nullable = false)
     private Integer age;
+
+
 
     public User(String name, Integer age) {
         this.name = name;
