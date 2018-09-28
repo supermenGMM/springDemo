@@ -1,0 +1,42 @@
+#server:
+#  port: 8082
+#  servlet:
+#    context-path: /hehe
+
+#person:
+#  name: super
+#  age: 23
+spring:
+    profiles:
+      active: dev
+    #日志配置
+    #detect 检查终端是否支持ansi。是的话多彩输出
+    #never 禁用ANSII-COLORED 输出。
+    #alaway  总是使用ANSI -colored输出，若终端不支持的时候，会有很多干扰信息，不推荐使用
+    output:
+      ansi:
+        enabled: detect
+
+
+name: super
+age: 24
+content: "姓名:${name},年龄:${age}}"
+
+# 日志配置
+debug: false
+logging:
+  file: log/my.log
+  level:
+    root: info
+    org.hibernate: error
+    org.springfromework: info
+    com.mm.test: warn
+
+#  pattern:
+#    file: "%d{yyyy‐MM‐dd} === [%thread] === %‐5level === %logger{50} ==== %msg%n"
+#    console: "%d{yyyy‐MM‐dd} [%thread] %‐5level %logger{50} ‐ %msg%n"
+
+#  path: /log/
+#二者不能同时使用，如若同时使用，则只有logging.file生效
+
+#配置日志级别
