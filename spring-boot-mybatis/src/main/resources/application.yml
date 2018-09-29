@@ -9,7 +9,7 @@ spring:
 
 
 mybatis:
-  type-aliases-package: com..mm.demo.domain
+  type-aliases-package: com.mm.demo.domain
   mapper-locations: classpath:mapper/*.xml
 #  configuration: mybatis
 #  type-handlers-package: #type handler处理包路径
